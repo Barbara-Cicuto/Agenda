@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Agenda</title>
 
-        <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}"> 
     </head> 
     <body>
         @include('partials.header')

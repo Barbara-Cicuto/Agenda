@@ -11,6 +11,9 @@ class HomeController extends Controller
         $contacts = Contact::all('id', 'name');
         if ($request -> get('msgCreatedContact'))
             return view('home', ['msgCreatedContact' => $request -> get('msgCreatedContact'), 'contacts' => $contacts]);
+        
+        if ($request -> get('msgDeleteContact'))
+            return view('home', ['msgDeleteContact' => $request -> get('msgDeleteContact'), 'contacts' => $contacts]);
         return view('home', ['contacts' => $contacts]);
     }
 
@@ -47,5 +50,10 @@ class HomeController extends Controller
         Contact::create($all);
 
         return redirect() -> route('home', ['msgCreatedContact' => 'Contact created successfully!']);
+    }
+
+    public function delete($id){
+        Contact::where('id', $id)->delete();
+        return redirect() -> route('home', ['msgDeleteContact' => 'Contact deleted successfully!']);
     }
 }

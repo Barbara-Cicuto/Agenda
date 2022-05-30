@@ -17,3 +17,4 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/show/{id}', 'HomeController@show')->name('show');
 Route::get('/new-edit', 'HomeController@newEdit')->name('new-edit');
 Route::post('/new-edit', 'HomeController@newEditPost')->name('new-edit');
+Route::get('/delete/{id}', 'HomeController@delete')->name('delete');

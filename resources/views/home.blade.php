@@ -1,15 +1,19 @@
 @extends('partials.master')
 @section('content')
     <main id="home">
+        {{$msgCreatedContact ?? ''}}
         <table border="1">
             <tr>
                 <th>Nome</th>
                 <th>Ações</th>
             </tr>
-            <tr>
-                <td>Nome da pessoa</td>
-                <td><a href="{{route('show')}}">Ver</a> - <a href="{{route('new-edit')}}">Editar</a> - <a href="#">Excluir</a></td>
-            </tr>
+            @foreach ($contacts as $contact)
+                <tr>
+                    <td>{{$contact->name}}</td>
+                    <td><a href="{{route('show')}}">Ver</a> - <a href="{{route('new-edit')}}">Editar</a> - <a href="#">Excluir</a></td>   
+                </tr>
+            @endforeach
         </table>
+        <a href="{{route('new-edit')}}">Novo usuário</a>
     </main>
 @endsection

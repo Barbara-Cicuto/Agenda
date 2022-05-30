@@ -8,7 +8,7 @@
             </tr>
             <tr>
                 <td>Nome da pessoa</td>
-                <td><a href="#">Ver</a> - <a href="#">Editar</a> - <a href="#">Excluir</a></td>
+                <td><a href="{{route('show')}}">Ver</a> - <a href="{{route('new-edit')}}">Editar</a> - <a href="#">Excluir</a></td>
             </tr>
         </table>
     </main>

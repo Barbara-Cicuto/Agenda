@@ -14,3 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/show', 'HomeController@show')->name('show');
+Route::get('/new-edit', 'HomeController@newEdit')->name('new-edit');
+Route::post('/new-edit', 'HomeController@newEditPost')->name('new-edit');

@@ -10,7 +10,7 @@
             @foreach ($contacts as $contact)
                 <tr>
                     <td>{{$contact->name}}</td>
-                    <td><a href="{{route('show')}}">Ver</a> - <a href="{{route('new-edit')}}">Editar</a> - <a href="#">Excluir</a></td>   
+                    <td><a href="{{route('show',['id' => $contact->id])}}">Ver</a> - <a href="{{route('new-edit')}}">Editar</a> - <a href="#">Excluir</a></td>   
                 </tr>
             @endforeach
         </table>

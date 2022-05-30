@@ -14,8 +14,9 @@ class HomeController extends Controller
         return view('home', ['contacts' => $contacts]);
     }
 
-    public function show(){
-        return view('show');
+    public function show($id){
+        $contact = Contact::find($id);
+        return view('show', ['contact' => $contact]);
     }
 
     public function newEdit(){

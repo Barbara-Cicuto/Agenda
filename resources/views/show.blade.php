@@ -2,14 +2,14 @@
 @section('content')
 <main id="show-contact">
     <div>
-        <h1>Nome da pessoa</h1>
+        <h1>{{$contact->name}}</h1>
         <div>
-            <p>Telefone:</p>
-            <p>Email:</p>
-            <p>Idade:</p>
-            <p>Instagram:</p>
-            <p>Linkedin:</p>
-            <p>Github:</p>
+            <p>Telefone: {{$contact->phone}}</p>
+            <p>Email: {{$contact->email}}</p>
+            <p>Idade: {{$contact->age}}</p>
+            <p>Instagram: {{$contact->instagram}}</p>
+            <p>Linkedin: {{$contact->linkedin}}</p>
+            <p>Github: {{$contact->github}}</p>
         </div>
     </div>
 </main>    

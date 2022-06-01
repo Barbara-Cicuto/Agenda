@@ -8,7 +8,8 @@ use App\Contact;
 class HomeController extends Controller
 {
     public function index(Request $request){
-        $contacts = Contact::all('id', 'name');
+        $user_id = auth()->user()->id;
+        $contacts = Contact::where('user_id', $user_id)->get(['id', 'name']);
         if ($request -> get('msgCreatedContact'))
             return view('home', ['msgCreatedContact' => $request -> get('msgCreatedContact'), 'contacts' => $contacts]);
         
@@ -90,22 +91,26 @@ class HomeController extends Controller
         unset($all['_token']);
 
         $contact = Contact::where('id', $id)->first('email');
+        $msgUpdatedContact = 'Contact updated successfully!';
 
         if ($contact->email == $all['email']) {
-            Contact::where('id', $id)->update($all);
-            return redirect()->route('edit-contact', ['id' => $id, 'msgUpdatedContact' => 'Contact updated successfully!']);
+            $user_id = auth()->user()->id;
+            Contact::where('user_id', $user_id)->where('id', $id)->update($all);
+            return redirect()->route('edit-contact', ['id' => $id, 'msgUpdatedContact' => $msgUpdatedContact]);
         } else {
             if (Contact::where('email', $all['email'])->first()) {
                 return redirect()->route('edit-contact', ['id' => $id,'msgCantUpdatedContact' => "Contact can't be updated: email already exists!"]);
             } else {
                 Contact::where('id', $id)->update($all);
-                return redirect()->route('edit-contact', ['id' => $id, 'msgUpdatedContact' => 'Contact updated successfully!']);
+                return redirect()->route('edit-contact', ['id' => $id, 'msgUpdatedContact' => $msgUpdatedContactd]);
             }
         } 
     }
 
     public function delete($id){
-        Contact::where('id', $id)->delete();
-        return redirect() -> route('home', ['msgDeleteContact' => 'Contact deleted successfully!']);
+        $user_id = auth()->user()->id;
+        Contact::where('user_id', $user_id)->where('id', $id)->delete();
+        return redirect()->route('home', ['msgDeleteContact' => 'Contact deleted successfully!']);
     }
+
 }

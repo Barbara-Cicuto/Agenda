@@ -27,7 +27,10 @@ class HomeController extends Controller
         return view('show', ['contact' => $contact]);
     }
 
-    public function newContact(){
+    public function newContact(Request $request){
+        if($request-> get('emailExists'))
+            return view('new-edit', ['emailExists'=> $request->get('emailExists'), 'edit' => false]);
+            
         return view('new-edit',['edit' => false]);
     }
 
@@ -35,7 +38,7 @@ class HomeController extends Controller
         $rules = [
             'name' => 'required|max:150|min:3',
             'phone' => 'required|max:18|min:14',
-            'email' => 'required|max:255|unique:contacts|email',
+            'email' => 'required|max:255|email',
             'age' => 'required|max:3|min:1',
             'instagram' => 'max:150|min:5',
             'linkedin' => 'max:150|min:5',
@@ -45,10 +48,14 @@ class HomeController extends Controller
             'required' => 'You must fill in the (:attribute)',
             'max' => '(:attribute) too long',
             'min' => '(:attribute) too short',
-            'email.unique' => 'This email already exist in the database',
         ];
                 
         $request->validate($rules,$feedback);
+        
+        $contact = Contact::where('user_id', auth()->user()->id)->where('email', $request->get('email'))->first();
+        if($contact){
+            return redirect()->route('new-contact', ["emailExists" => $contact->email." já existe"]);
+        }
         
         $all = $request -> all();
         unset($all['_token']);

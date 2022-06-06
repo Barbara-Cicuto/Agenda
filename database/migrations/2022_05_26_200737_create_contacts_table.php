@@ -18,7 +18,7 @@ class CreateContactsTable extends Migration
             $table->bigInteger('user_id');
             $table->text('name');
             $table->string('phone');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->integer('age');
             $table->string('instagram')->nullable();
             $table->string('linkedin')->nullable();

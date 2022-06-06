@@ -3,13 +3,15 @@
 <main id="new-edit-contact">
     {{$msgCantUpdatedContact ?? ''}}
     {{$msgUpdatedContact ?? ''}}
+    {{$emailExists ?? ''}}
     @if ($edit == true)
         <form action="{{route('edit-contact-post', ['id' => $contact->id])}}" method="post">
     @else 
         <form action="{{route('new-contact-post')}}" method="post">
     @endif
             @csrf
-            <input type="hidden" name="user_id" value="{{1}}">
+            
+            <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
     
             <input type="text" name="name" placeholder="Nome da pessoa" value="{{$contact->name ?? ''}}">
             <p style ="color:red;">{{$errors->has('name') ? $errors->first('name') : ''}}</p>

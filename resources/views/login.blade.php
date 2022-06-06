@@ -15,5 +15,7 @@
 
         <input type="submit" value="Enter">
     </form>
+    <a href="{{route('subscribe')}}">Subcribe</a>
+
 </main>    
 @endsection

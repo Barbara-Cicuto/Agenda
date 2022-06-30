@@ -17,8 +17,8 @@ Route::get('/login', 'LoginController@login')->name('login');
 Route::post('/login', 'LoginController@loginPost')->name('login-post');
 Route::get('/logout', 'LoginController@logout')->name('logout');
 
-Route::get('/subscribe', 'LoginController@subscribe')->name('subscribe');
-Route::post('/subscribe', 'LoginController@subscribePost')->name('subscribe-post');
+Route::get('/subscribe', 'UserController@subscribe')->name('subscribe');
+Route::post('/subscribe', 'UserController@subscribePost')->name('subscribe-post');
 
 Route::middleware('login')->prefix('')->group(function(){
     Route::get('/', 'HomeController@index')->name('home');

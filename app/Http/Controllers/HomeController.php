@@ -109,7 +109,7 @@ class HomeController extends Controller
                 return redirect()->route('edit-contact', ['id' => $id,'msgCantUpdatedContact' => "Contact can't be updated: email already exists!"]);
             } else {
                 Contact::where('id', $id)->update($all);
-                return redirect()->route('edit-contact', ['id' => $id, 'msgUpdatedContact' => $msgUpdatedContactd]);
+                return redirect()->route('edit-contact', ['id' => $id, 'msgUpdatedContact' => $msgUpdatedContact]);
             }
         } 
     }

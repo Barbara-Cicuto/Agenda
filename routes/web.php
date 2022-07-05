@@ -19,8 +19,8 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 
 Route::get('/subscribe', 'UserController@subscribe')->name('subscribe');
 Route::post('/subscribe', 'UserController@subscribePost')->name('subscribe-post');
-Route::get('/profile', 'UserController@profile')->name('profile');
-Route::post('/profile', 'UserController@profile')->name('profile-post');
+Route::get('/profile/{id}', 'UserController@profile')->name('profile');
+Route::post('/profile/{id}', 'UserController@profilePost')->name('profile-post');
 
 
 Route::middleware('login')->prefix('')->group(function(){

@@ -38,10 +38,10 @@ class UserController extends Controller
         return redirect() -> route('login', ['msgCreatedUser' => 'User created successfully!']);
     }
 
-    public function profile(){
-
-        return view ('user');
+    public function profile($id){
+        $user_info = User::where('id', $id)->get(['name','email'])->first();
         
+        return view ('user', ['user' => $user_info]);
     }
 
 }

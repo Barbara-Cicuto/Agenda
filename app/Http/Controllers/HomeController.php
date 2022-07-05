@@ -19,7 +19,7 @@ class HomeController extends Controller
         if ($request -> get('msgUpdatedContact'))
             return view('home', ['msgUpdatedContact' => $request -> get('msgUpdatedContact'), 'contacts' => $contacts]);   
  
-        return view('home', ['contacts' => $contacts]);
+        return view('home', ['contacts' => $contacts, 'user_id' => $user_id]);
     }
 
     public function show($id){

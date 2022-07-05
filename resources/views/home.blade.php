@@ -15,6 +15,7 @@
                 </tr>
             @endforeach
         </table>
-        <a href="{{route('new-contact')}}">Novo usuário</a>
+        <a href="{{route('new-contact')}}">New user</a>
+        <a href="{{route('profile')}}">Profile</a>
     </main>
 @endsection

@@ -37,4 +37,11 @@ class UserController extends Controller
         
         return redirect() -> route('login', ['msgCreatedUser' => 'User created successfully!']);
     }
+
+    public function profile(){
+
+        return view ('user');
+        
+    }
+
 }

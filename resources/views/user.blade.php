@@ -1,23 +1,12 @@
 @extends('partials.master')
 @section('content')
 <main id="user">
-    <table border=1>
-        <tr>
-            <th>Info</th>
-            <th>Data</th>
-            <th>Action</th>
-        </tr>
-        <tr>
-            <td>Name</td>
-            <td>{{$user->name}}</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td>{{$user->email}}</td>
-            <td></td>
-        </tr>
-    </table>
+    <form action="{{route('profile-post', ['id' => $id])}}">
+        <input type=text name="username" value="{{$user->name}}"><br>
+        <input type=email name="useremail" value="{{$user->email}}">
+        <input type="submit" name="usersave" value="Save">
+    </form>
+    <a class="edit">edit</a>
     <a href="{{route('home')}}">Home</a>
 </main>
 @endsection

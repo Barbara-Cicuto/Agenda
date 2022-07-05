@@ -41,7 +41,11 @@ class UserController extends Controller
     public function profile($id){
         $user_info = User::where('id', $id)->get(['name','email'])->first();
         
-        return view ('user', ['user' => $user_info]);
+        return view ('user', ['user' => $user_info, 'id' => $id]);
     }
 
+
+    public function profile_post($id) {
+
+    }
 }

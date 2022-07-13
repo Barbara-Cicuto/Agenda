@@ -17,7 +17,10 @@ class HomeController extends Controller
             return view('home', ['msgDeleteContact' => $request -> get('msgDeleteContact'), 'contacts' => $contacts]);
 
         if ($request -> get('msgUpdatedContact'))
-            return view('home', ['msgUpdatedContact' => $request -> get('msgUpdatedContact'), 'contacts' => $contacts]);   
+            return view('home', ['msgUpdatedContact' => $request -> get('msgUpdatedContact'), 'contacts' => $contacts]);  
+        
+        if ($request -> get('msgUserInfoUpdated'))
+            return view('home', ['msgUserInfoUpdated' => $request -> get('msgUserInfoUpdated'), 'user_id' => $user_id, 'contacts' => $contacts]);  
  
         return view('home', ['contacts' => $contacts, 'user_id' => $user_id]);
     }

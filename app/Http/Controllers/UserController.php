@@ -38,14 +38,46 @@ class UserController extends Controller
         return redirect() -> route('login', ['msgCreatedUser' => 'User created successfully!']);
     }
 
-    public function profile($id){
+    public function profile(Request $request, $id){
         $user_info = User::where('id', $id)->get(['name','email'])->first();
+
+        if ($request -> get('msgUserEmailExists'))
+            return view('user', ['id' => $id, 'user' => $user_info, 'msgUserEmailExists' => $request -> get('msgUserEmailExists')]);
         
         return view ('user', ['user' => $user_info, 'id' => $id]);
     }
 
 
-    public function profile_post($id) {
+    public function profilePost(Request $request, $id) {
+        $rules = [
+            'name' => 'required|max:150|min:3',
+            'email' => 'required|email'
+        ];
+        $feedback = [
+            'required' => "It's necessary to inform: (:attribute)",
+            'max' => 'Make sure that your name is up to 150 character',
+            'min' => 'Make sure that your name has at least 3 character',
+            'email' => 'Please enter your email address'
+        ];
 
+        $request->validate($rules, $feedback);
+
+        $all = $request->all();
+        unset($all['_token']);
+
+        $user = User::where('id', $id)->first('email');   
+        $msgUserInfoUpdated = "User information updated successfully.";
+        
+        if ($user->email == $all['email']) {
+            User::where('id', $id)->update($all);
+            return redirect()->route('home', ['id' => $id, 'msgUserInfoUpdated' => $msgUserInfoUpdated]);
+        } else {
+            if (User::where('email', $all['email'])->first()) {
+                return redirect()->route('profile', ['id' => $id, 'msgUserEmailExists' => "User information can't be updated because the email address is already in use by another user."]);
+            } else {
+                User::where('id', $id)->update($all);
+                return redirect()->route('home', ['id' => $id, 'msgUserInfoUpdated' => $msgUserInfoUpdated]);
+            }
+        }
     }
 }

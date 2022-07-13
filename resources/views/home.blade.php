@@ -3,6 +3,7 @@
     <main id="home">
         {{$msgCreatedContact ?? ''}}
         {{$msgDeleteContact ?? ''}}
+        {{$msgUserInfoUpdated ?? ''}}
         <table border="1">
             <tr>
                 <th>Nome</th>

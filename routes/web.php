@@ -19,8 +19,6 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 
 Route::get('/subscribe', 'UserController@subscribe')->name('subscribe');
 Route::post('/subscribe', 'UserController@subscribePost')->name('subscribe-post');
-Route::get('/profile/{id}', 'UserController@profile')->name('profile');
-Route::post('/profile/{id}', 'UserController@profilePost')->name('profile-post');
 
 
 Route::middleware('login')->prefix('')->group(function(){
@@ -31,5 +29,7 @@ Route::middleware('login')->prefix('')->group(function(){
     Route::get('/edit-contact/{id}', 'HomeController@editContact')->name('edit-contact');
     Route::post('/edit-contact/{id}', 'HomeController@editContactPost')->name('edit-contact-post');
     Route::get('/delete/{id}', 'HomeController@delete')->name('delete');
-
+    
+    Route::get('/profile/{id}', 'UserController@profile')->name('profile');
+    Route::post('/profile/{id}', 'UserController@profilePost')->name('profile-post');
 });

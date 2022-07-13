@@ -15,5 +15,6 @@
     </form>
     <a class="edit">edit</a>
     <a href="{{route('home')}}">Home</a>
+    <a href="{{route('delete-profile', ['id' => $id])}}">Delete</a>
 </main>
 @endsection

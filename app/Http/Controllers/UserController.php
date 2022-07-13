@@ -80,4 +80,9 @@ class UserController extends Controller
             }
         }
     }
+
+    public function delete($id) {
+        User::where('id', $id)->delete();
+        return redirect()->route('login');
+    }
 }

@@ -32,4 +32,5 @@ Route::middleware('login')->prefix('')->group(function(){
     
     Route::get('/profile/{id}', 'UserController@profile')->name('profile');
     Route::post('/profile/{id}', 'UserController@profilePost')->name('profile-post');
+    Route::get('/delete-profile/{id}', 'UserController@delete')->name('delete-profile');
 });

@@ -39,12 +39,18 @@ class UserController extends Controller
     }
 
     public function profile(Request $request, $id){
-        $user_info = User::where('id', $id)->get(['name','email'])->first();
+        $logged_id = auth()->user()->id;
 
-        if ($request -> get('msgUserEmailExists'))
-            return view('user', ['id' => $id, 'user' => $user_info, 'msgUserEmailExists' => $request -> get('msgUserEmailExists')]);
+        if ($logged_id == $id) {
+            $user_info = User::where('id', $id)->get(['name','email'])->first();
+            if ($request -> get('msgUserEmailExists'))
+                return view('user', ['id' => $id, 'user' => $user_info, 'msgUserEmailExists' => $request -> get('msgUserEmailExists')]);
+            
+            return view ('user', ['user' => $user_info, 'id' => $id]);
+        } 
+
+        return redirect()->back();
         
-        return view ('user', ['user' => $user_info, 'id' => $id]);
     }
 
 

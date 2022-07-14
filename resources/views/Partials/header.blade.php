@@ -1,11 +1,11 @@
 <header id="header">
     <div>
         <figure>
-            <img src="" title="Logo" alt="agenda's logo">
+            <a href="{{route('home')}}">
+                <img src="{{asset('assets/images/notebook.png')}}" title="Logo" alt="Agenda's logo">
+            </a>
         </figure>
+        <p>Agenda</p>
     </div>
-    <nav>
-        <a href="{{route('profile', ['id' => $user_id])}}">Profile</a>
-        <a href="{{route('logout')}}">Logout</a>
-    </nav>
+    <a href="{{route('logout')}}">Logout</a>
 </header>

@@ -7,10 +7,43 @@
 html{
     font-size: 62.5%;
     font-family: 'Montserrat', sans-serif;
+    background-color: #F2E6D3;
 }
 
 header{
     position: sticky;
-    padding: 3rem;
-    background-color: blueviolet;
+    display: flex;
+    justify-items: center;
+    padding: 2rem 5rem 2rem 5rem;
+    background-color: #483359;
+    font-size: 62.5%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+header > div{
+    display: flex;
+    width: 100%;
+}
+
+header > div > figure > a > img{
+    position: sticky;
+    margin-left: 5rem;
+    margin-right: 2rem;
+    width: 100%;
+    max-width: 5rem;
+}
+
+header > div > p{
+    color: #BABABF;
+    font-size: 3rem;
+    font-weight: 400;
+    padding-top: 1.5rem;
+}
+
+header > a{
+    text-decoration: none;
+    color: #BABABF;
+    font-size: 2rem;
+    padding-right: 5rem;
+    padding-top: 2.5rem;
 }

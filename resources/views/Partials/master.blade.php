@@ -7,6 +7,7 @@
         <title>Agenda</title>
 
         <link rel="stylesheet" href="{{ asset('assets/css/header.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     </head> 

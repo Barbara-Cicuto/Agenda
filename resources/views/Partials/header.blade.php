@@ -7,5 +7,5 @@
         </figure>
         <p>Agenda</p>
     </div>
-    <a href="{{route('logout')}}">Logout</a>
+    <a href="{{route('logout')}}">Logout</a>        
 </header>

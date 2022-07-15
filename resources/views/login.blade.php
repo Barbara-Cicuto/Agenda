@@ -1,21 +1,27 @@
 @extends('partials.master')
 @section('content')
 <main id="login">
-    {{$failedLogin ?? ''}}
-    {{$needAuthentication ?? ''}}
-    <form action="{{route('login-post')}}" method="post">
-        @csrf
-        <input type="email" name="email" placeholder="Email">
-        <p>{{$errors->has('email') ? $errors->first('email') : ''}}</p>
+    <div>
+        {{$failedLogin ?? ''}}
+        {{$needAuthentication ?? ''}}
+    </div>
+    <div>
+        <form action="{{route('login-post')}}" method="post">
+            @csrf
 
-        <input type="password" name="password" placeholder="Password">
-        <p>{{$errors->has('password') ? $errors->first('password') : ''}}</p>
-
-        <input type="checkbox" name="rememberMe">Remember me
-
-        <input type="submit" value="Enter">
-    </form>
+            <label for="email">Email</label><br>
+            <input type="email" name="email" placeholder="Email">
+            <p>{{$errors->has('email') ? $errors->first('email') : ''}}</p>
+            
+            <label for="password">Password</label><br>
+            <input type="password" name="password" placeholder="Password">
+            <p>{{$errors->has('password') ? $errors->first('password') : ''}}</p>
+    
+            <input type="checkbox" name="rememberMe">Remember me
+    
+            <input type="submit" value="Enter">
+        </form>
+    </div>
     <a href="{{route('subscribe')}}">Subcribe</a>
-
 </main>    
 @endsection

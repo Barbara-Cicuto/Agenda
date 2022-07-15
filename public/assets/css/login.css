@@ -1,0 +1,26 @@
+#login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12rem;
+    margin-left: -3rem;
+}
+
+#login > div:nth-child(1){
+    color: #2B2B40;
+    font-size: 2.5rem;
+    margin-top: -3rem;
+    margin-bottom: 5rem;
+}
+
+#login > div:nth-child(2) > form > label{
+    color: #2B2B40;
+    font-size: 1.5rem;
+}
+
+#login > div:nth-child(2) > form > input{
+    margin: 0.5rem 0 1.5rem 0;
+    width: 100%;
+    max-width: 55rem;
+}
